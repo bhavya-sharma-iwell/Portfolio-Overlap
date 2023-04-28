@@ -21,7 +21,7 @@ body {
   font-weight: 400;
   color: #626161;
   word-spacing: 5px;
-  margin: 30px 43px;
+  margin: 2vw;
 }
 .outerContainer .filterArea {
   position: relative;
@@ -40,6 +40,9 @@ body {
   color: #FFFFFF;
   padding: 10px;
   width: 8%;
+}
+.outerContainer .filterArea .proceedButton:disabled {
+  opacity: 50%;
 }
 .outerContainer .filterArea .searchField {
   display: inline-block;
@@ -267,7 +270,7 @@ body {
 }
 .outerContainer .portfolioOverlap .rightDiv .rightContainerB .commonStockDiv .commonStockIcon {
   position: absolute;
-    margin: 0.1vw 0 0 0.4vw;
+    margin: -0.1vw 0 0 0.4vw;
     width: 3vw;
     height: 6vh;
 }
@@ -403,6 +406,20 @@ body {
   position: sticky;
   top: 0px;
 }
+.outerContainer .tableScroll .styledTable .tableHeading .arrowUp{
+  margin: -0.1vw 0 0 0vw;
+    position: absolute;
+    z-index: 1;
+}
+.outerContainer .tableScroll .styledTable .tableHeading .arrowDown{
+  position: absolute;
+  margin: 0.4vw 0 0 0vw;
+  z-index: 1;  
+}
+.outerContainer .tableScroll .styledTable .tableHeading .value{
+  margin:0 0 0 1vw;
+  
+}
 .outerContainer .tableScroll .styledTable .tableRow .tableData {
   font-size: 1vw;
   padding: 5px 5px 5px 20px;
@@ -470,6 +487,7 @@ body {
   }
   .outerContainer .filterArea .searchField {
     width: 87vw;
+    margin: 0 0 0 2vw;
   }
   .outerContainer .filterArea .searchField .dropdownInputOuter {
     width: 90%;
@@ -652,6 +670,15 @@ body {
   .outerContainer .tableScroll .styledTable .tableHeading {
     font-size: 2vw;
   }
+  .outerContainer .tableScroll .styledTable .tableHeading .arrowUp{
+    margin: -0.3vw 0 0 0vw;
+  }
+  .outerContainer .tableScroll .styledTable .tableHeading .arrowDown{
+    margin: 1vw 0 0 0vw;
+  }
+  .outerContainer .tableScroll .styledTable .tableHeading .value{
+    margin: 0 0 0 2vw;
+  }
   .outerContainer .tableScroll .styledTable .tableRow .tableData {
     font-size: 1.8vw;
     padding: 5px 0px 4px 3px;
@@ -667,14 +694,18 @@ body {
   }
   .outerContainer .info {
     font-size: 0.7em;
-    margin: 16px 43px;
-    font-weight: bold;
+    margin: 4vw;
   }
   .outerContainer .filterArea {
     width: 100%;
   }
   .outerContainer .filterArea .searchField {
     width: 87vw;
+    height:6.5em;
+  }
+  .outerContainer .filterArea .searchField .schemeLabel {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-size: 0.8rem;
   }
   .outerContainer .filterArea .searchField .dropdownInputOuter {
     width: 90%;
@@ -720,6 +751,10 @@ body {
     height: 6vw;
     margin: -1vw 0 0 65vw;
   }
+  .outerContainer .portfolioOverlap .leftDiv .vennDiagramLeft .sideLabel {
+    font-size: 1.7vw;
+  }
+
   .outerContainer .portfolioOverlap .leftDiv .vennDiagramLeft .graphA {
     position: absolute;
     margin: 11% 0% 0% 30%;
@@ -841,7 +876,7 @@ body {
   }
   .outerContainer .portfolioOverlap .rightDiv .rightContainerB .commonStockDiv .commonStockIcon {
     position: absolute;
-  margin: 5.5vw 0 0 5vw;
+    margin: 0.5vw 0 0 2vw;
   width: 10vw;
   height:4vh;
   }
@@ -871,7 +906,7 @@ body {
   }
   .outerContainer .portfolioOverlap .rightDiv .rightContainerC .unCommonStockDiv .unCommonStockIcon {
     position: absolute;
-  margin: 5.5vw 0 0 4vw;
+    margin: 0.5vw 0 0 1vw;
   width: 12vw;
   height:4vh;
   }
@@ -908,7 +943,7 @@ body {
   }
   .outerContainer .portfolioOverlap .rightDiv .rightContainerD .unCommonStockDiv .unCommonStockIcon {
     position: absolute;
-  margin: 5.5vw 0 0 4vw;
+    margin: 0.5vw 0 0 1vw;
   width: 12vw;
   height:4vh;
   }
@@ -940,6 +975,19 @@ body {
   }
   .outerContainer .tableScroll .styledTable .tableHeading {
     font-size: 3vw;
+  }
+  .outerContainer .tableScroll .styledTable .tableHeading .arrowUp{
+    margin: -0.7vw 0 0 0vw;
+    width: 7px;
+    height: 7px;
+  }
+  .outerContainer .tableScroll .styledTable .tableHeading .arrowDown{
+    margin: 1.4vw 0 0 0vw;
+    width: 7px;
+    height: 7px;
+  }
+  .outerContainer .tableScroll .styledTable .tableHeading .value{
+    margin: 0 0 0 4vw;
   }
   .outerContainer .tableScroll .styledTable .tableRow .tableData {
     font-size: 3vw;

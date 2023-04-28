@@ -3,6 +3,9 @@ import axios from 'axios'
 import FilterArea from '../components/filterArea.jsx'
 import StocksTable from '../components/stocksTable.jsx'
 import PortfolioOverlap from '../components/portfolioOverlap.jsx'
+import { useRouter } from 'next/router'
+
+
 
 export default function Index(){
   const [loading, setLoading] = useState(false)
@@ -21,7 +24,7 @@ export default function Index(){
     console.log(name)
     debounceTimer = setTimeout(() => {
       axios
-        .get(`http://localhost:3000/getSchemes`, { params: { name } })
+        .get(`http://localhost:3000/getSchemes`, { params: {schemeName: name } })
         .then((res) => {
           if (res.data && res.data.status == 0) {
             setMutualFunds(res.data.result);
@@ -62,6 +65,15 @@ export default function Index(){
       return true
   }
 
+
+  const accending=(holding,value)=>{
+    let obj=[...holdingsDetails.holding]
+    holding=="A" && obj.sort((a, b) => (a.holdingsA > b.holdingsA) ? (value ? 1 :-1) : (value ? -1 :1))
+    holding=="B" && obj.sort((a, b) => (a.holdingsB > b.holdingsB) ? (value ? 1 :-1) : (value ? -1 :1))
+    holding=="asset" && obj.sort((a, b) => (Math.min(a.netAssetA,a.netAssetB) > Math.min(b.netAssetA,b.netAssetB)) ? (value ? 1 :-1) : (value ? -1 :1))
+    setHoldingsDetails({holding:obj,vennDiagram:holdingsDetails.vennDiagram,overlapValue:holdingsDetails.overlapValue})
+  }
+
   return (
     <div className='outerContainer '>
       <h3 className='info'> Diversity the holding across different categories of fund investing in different asset classes after comparing the portfolio of various fund houses
@@ -82,7 +94,7 @@ export default function Index(){
           handleInputChange={handleInputChange}
         />
       </div>
-      {loading ? <div className='loader' /> : <>  {holdingsDetails && <PortfolioOverlap holdingsDetails={holdingsDetails} />}   {holdingsDetails && <StocksTable holdingsDetails={holdingsDetails} schemeA={schemeA} schemeB={schemeB} />} </>}
+      {loading ? <div className='loader' /> : <>  {holdingsDetails && <PortfolioOverlap holdingsDetails={holdingsDetails} />}   {holdingsDetails && <StocksTable holdingsDetails={holdingsDetails} accending={accending} schemeA={schemeA} schemeB={schemeB} />} </>}
     </div>
   )
 }

@@ -16,13 +16,13 @@ export default function SearchField(props) {
           .map((item) => (
             <div
               onClick={() => {
-                props.setScheme({ scheme: item.orgsch, id: item.schid })
+                props.setScheme({ scheme: item.shortName, id: item.schid })
                 props.setDropdown(false)
               }}
               className="dropDown-row"
               key={item.schid}
             >
-              {item.orgsch}
+              {item.shortName}
             </div>
           ))}
       </div>

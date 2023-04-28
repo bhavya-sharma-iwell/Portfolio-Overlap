@@ -1,8 +1,12 @@
 import React from 'react'
 import ProgressBar from './progressBar.jsx'
 import SquareIcon from '@mui/icons-material/Square'
+import Image from 'next/image'
+import upArrow from '../public/arrow-up.png'
+import downArrow from '../public/down.png'
 
 export default function StocksTable(props) {
+
   return (
     <>
       <span className='tableLabel'>Stocks Overlapping in mutual fund schemes</span>
@@ -10,9 +14,9 @@ export default function StocksTable(props) {
         <table className='styledTable'>
           <thead>
             <tr>
-              <th className='tableHeading'>{props.schemeA.scheme}</th>
-              <th className='tableHeading'>Portfolio Overlap</th>
-              <th className='tableHeading'>{props.schemeB.scheme}</th>
+              <th className='tableHeading'><Image src={upArrow} className='arrowUp'  width={10} height={10} onClick={()=>{props.accending("A",1)}}/><Image src={downArrow} className='arrowDown'  width={10} height={10} onClick={()=>{props.accending("A",0)}}/><span className='value'>{props.schemeA.scheme}</span></th>
+              <th className='tableHeading'><Image src={upArrow}  className='arrowUp' width={10} height={10} onClick={()=>{props.accending("asset",1)}}/><Image src={downArrow} className='arrowDown'  width={10} height={10} onClick={()=>{props.accending("asset",0)}}/><span className='value'>Portfolio Overlap</span></th>
+              <th className='tableHeading'><Image src={upArrow}  className='arrowUp' width={10} height={10} onClick={()=>{props.accending("B",1)}}/><Image src={downArrow} className='arrowDown'  width={10} height={10} onClick={()=>{props.accending("B",0)}}/><span className='value'>{props.schemeB.scheme}</span></th>
             </tr>
           </thead>
           <tbody className='scroll'>
