@@ -13,15 +13,15 @@ export default function ProgressBar(props) {
     backgroundColor: props.bgcolor,
     textAlign: "right"
   };
-const Percentage={
-  fontSize:"10px",
-  color:props.bgcolor,
-  fontWeight:"bold",
-  float:"right",
-};
+// const Percentage={
+//   fontSize:"10px",
+//   color:props.bgcolor,
+//   fontWeight:"bold",
+//   float:"right",
+// };
   return (
     < >
-      <span style={Percentage}>{props.value}</span>
+      {/* <span style={Percentage}>{props.value}</span> */}
       <div style={outerBar}>
       <div style={innerBar}></div>   
       </div>

@@ -406,20 +406,70 @@ body {
   position: sticky;
   top: 0px;
 }
-.outerContainer .tableScroll .styledTable .tableHeading .arrowUp{
-  margin: -0.1vw 0 0 0vw;
+.outerContainer .tableScroll .styledTable .tableHeading :hover{
+cursor: pointer;
+}
+
+.outerContainer .tableScroll .styledTable .tableHeading .sortDefault:before,.sortDefault:after{
+    border: 5px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    right: 5px;
+    top: 50%;
     position: absolute;
-    z-index: 1;
-}
-.outerContainer .tableScroll .styledTable .tableHeading .arrowDown{
-  position: absolute;
-  margin: 0.4vw 0 0 0vw;
-  z-index: 1;  
-}
-.outerContainer .tableScroll .styledTable .tableHeading .value{
-  margin:0 0 0 1vw;
-  
-}
+    width: 0;
+  }
+  .outerContainer .tableScroll .styledTable .tableHeading .sortDefault:before {
+    border-bottom-color: #666;
+    margin-top: -11px;
+  }
+  .outerContainer .tableScroll .styledTable .tableHeading .sortDefault::after {
+    border-top-color: #666;
+    margin-top: 3px;
+  }
+
+  .outerContainer .tableScroll .styledTable .tableHeading .sortAscending:before,.sortAscending:after{
+      border: 5px solid transparent;
+      content: "";
+      display: block;
+      height: 0;
+      right: 5px;
+      top: 50%;
+      position: absolute;
+      width: 0;
+    }
+    .outerContainer .tableScroll .styledTable .tableHeading .sortAscending:before {
+      border-bottom-color: #666;
+      margin-top: -11px;
+      opacity: 30%;
+    }
+    .outerContainer .tableScroll .styledTable .tableHeading .sortAscending:after {
+      border-top-color: #666;
+      margin-top: 3px;
+    }
+
+    .outerContainer .tableScroll .styledTable .tableHeading .sortDescending:before,.sortDescending:after{
+    border: 5px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    right: 5px;
+    top: 50%;
+    position: absolute;
+    width: 0;
+  }
+  .outerContainer .tableScroll .styledTable .tableHeading .sortDescending:before {
+    border-bottom-color: #666;
+    margin-top: -11px;
+  }
+  .outerContainer .tableScroll .styledTable .tableHeading .sortDescending:after {
+    border-top-color: #666;
+    margin-top: 3px;
+    opacity: 30%;
+  }
+
+
 .outerContainer .tableScroll .styledTable .tableRow .tableData {
   font-size: 1vw;
   padding: 5px 5px 5px 20px;
@@ -429,6 +479,18 @@ body {
   margin: 2px 0 0 6px;
   vertical-align: top;
 }
+.outerContainer .tableScroll .styledTable .tableRow .tableData .percentageLeft{
+float:right;
+font-size:0.9vw;
+color:#5275E9;
+font-weight: bold;
+}
+.outerContainer .tableScroll .styledTable .tableRow .tableData .percentageRight{
+  float:right;
+  font-size:0.9vw;
+  color:#F8432B;
+  font-weight: bold;
+  }
 .outerContainer .tableScroll .styledTable .tableRow .progressColoumn {
   width: 35%;
   padding: 0 30px 0 17px;
@@ -682,6 +744,12 @@ body {
   .outerContainer .tableScroll .styledTable .tableRow .tableData {
     font-size: 1.8vw;
     padding: 5px 0px 4px 3px;
+  }
+  .outerContainer .tableScroll .styledTable .tableRow .tableData .percentageLeft{
+    font-size:1.6vw;
+  }
+  .outerContainer .tableScroll .styledTable .tableRow .tableData .percentageRight{
+      font-size:1.6vw;
   }
   .outerContainer .tableScroll .styledTable .tableRow .progressColoumn {
     width: 30%;
@@ -986,12 +1054,19 @@ body {
     width: 7px;
     height: 7px;
   }
+
   .outerContainer .tableScroll .styledTable .tableHeading .value{
     margin: 0 0 0 4vw;
   }
   .outerContainer .tableScroll .styledTable .tableRow .tableData {
     font-size: 3vw;
     padding: 5px 0px 4px 3px;
+  }
+  .outerContainer .tableScroll .styledTable .tableRow .tableData .percentageLeft{
+    font-size:2.5vw;
+  }
+  .outerContainer .tableScroll .styledTable .tableRow .tableData .percentageRight{
+      font-size:2.5vw;
   }
   .outerContainer .tableScroll .styledTable .tableRow .progressColoumn {
     width: 30%;

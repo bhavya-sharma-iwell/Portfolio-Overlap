@@ -3,8 +3,6 @@ import axios from 'axios'
 import FilterArea from '../components/filterArea.jsx'
 import StocksTable from '../components/stocksTable.jsx'
 import PortfolioOverlap from '../components/portfolioOverlap.jsx'
-import { useRouter } from 'next/router'
-
 
 
 export default function Index(){
@@ -16,6 +14,7 @@ export default function Index(){
   const [schemeB, setSchemeB] = useState({})
   const [mutualFunds, setMutualFunds] = useState('')
   const [debounce, setDebounce] = useState()
+  const [sortTable,setSortTable]=useState({})
 
   const handleInputChange = (event, label) => {
     let debounceTimer = debounce
@@ -52,9 +51,8 @@ export default function Index(){
         if (res.data && res.data.status == 0) {
           setHoldingsDetails(res.data.result)
           setLoading(false);
+          setSortTable({name:"",direction:2})
         }
-
-
       })
   }
 
@@ -66,12 +64,13 @@ export default function Index(){
   }
 
 
-  const accending=(holding,value)=>{
+  const sort=(holding)=>{
     let obj=[...holdingsDetails.holding]
-    holding=="A" && obj.sort((a, b) => (a.holdingsA > b.holdingsA) ? (value ? 1 :-1) : (value ? -1 :1))
-    holding=="B" && obj.sort((a, b) => (a.holdingsB > b.holdingsB) ? (value ? 1 :-1) : (value ? -1 :1))
-    holding=="asset" && obj.sort((a, b) => (Math.min(a.netAssetA,a.netAssetB) > Math.min(b.netAssetA,b.netAssetB)) ? (value ? 1 :-1) : (value ? -1 :1))
+    holding=="A" && obj.sort((a, b) => (a.holdingsA > b.holdingsA) ? (sortTable.direction ? 1 :-1) : (sortTable.direction ? -1 :1))
+    holding=="B" && obj.sort((a, b) => (a.holdingsB > b.holdingsB) ? (sortTable.direction ? 1 :-1) : (sortTable.direction ? -1 :1))
+    holding=="asset" && obj.sort((a, b) => (Math.min(a.netAssetA,a.netAssetB) > Math.min(b.netAssetA,b.netAssetB)) ? (sortTable.direction ? 1 :-1) : (sortTable.direction ? -1 :1))
     setHoldingsDetails({holding:obj,vennDiagram:holdingsDetails.vennDiagram,overlapValue:holdingsDetails.overlapValue})
+    setSortTable({name:holding,direction:!(sortTable.direction)})
   }
 
   return (
@@ -94,7 +93,7 @@ export default function Index(){
           handleInputChange={handleInputChange}
         />
       </div>
-      {loading ? <div className='loader' /> : <>  {holdingsDetails && <PortfolioOverlap holdingsDetails={holdingsDetails} />}   {holdingsDetails && <StocksTable holdingsDetails={holdingsDetails} accending={accending} schemeA={schemeA} schemeB={schemeB} />} </>}
+      {loading ? <div className='loader' /> : <>  {holdingsDetails && <PortfolioOverlap holdingsDetails={holdingsDetails} />}   {holdingsDetails && <StocksTable holdingsDetails={holdingsDetails} sort={sort} schemeA={schemeA} schemeB={schemeB} sortTable={sortTable}/>} </>}
     </div>
   )
 }

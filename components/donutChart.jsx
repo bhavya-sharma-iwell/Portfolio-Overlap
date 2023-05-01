@@ -33,7 +33,7 @@ export default function DonutChart(props) {
                     <Label width={30} position="center" fontWeight= '550' dx={20} dy={3} fontSize="20px">%</Label>
 
                     <Label
-                    value="portfolio overlap percentage"
+                    value="Portfolio overlap percentage"
                     dy={20}
                     style={{
                     textAnchor: "middle",
