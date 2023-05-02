@@ -10,14 +10,9 @@ body {
 }
 
 .outerContainer {
-  /* width: 100%;
-  display: inline-block;
-  position: relative; */
   padding: 1%;
 }
 .outerContainer .info {
-  /* font-family: Arial, Helvetica, sans-serif;
-  font-size: 15x; */
   font-weight: 400;
   color: #626161;
   word-spacing: 5px;
@@ -25,7 +20,6 @@ body {
 }
 .outerContainer .filterArea {
   position: relative;
-  /* width: 98%; */
   padding: 2.66% 1% 2.66% 1%;
   margin: 0% 1% 2% 1%;
   background-color: #FFFFFF;
@@ -46,13 +40,11 @@ body {
 }
 .outerContainer .filterArea .searchField {
   display: inline-block;
-  /* vertical-align: top; */
   background-color: #FFFFFF;
   width: 50%;
   height: 7.5em;
 }
 .outerContainer .filterArea .searchField .schemeLabel {
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-size: 1.3rem;
 }
 .outerContainer .filterArea .searchField .dropdownInputOuter {
@@ -100,7 +92,7 @@ body {
   text-align: start;
   margin: 2px 0;
   background-color: white;
-  padding: 4px;
+  padding: 6px;
   margin-bottom: 1px;
   font-size: 18px;
 }
@@ -406,7 +398,7 @@ body {
   position: sticky;
   top: 0px;
 }
-.outerContainer .tableScroll .styledTable .tableHeading :hover{
+.outerContainer .tableScroll .styledTable .tableHeading:hover{
 cursor: pointer;
 }
 
@@ -772,7 +764,6 @@ font-weight: bold;
     height:6.5em;
   }
   .outerContainer .filterArea .searchField .schemeLabel {
-    /* font-family: Arial, Helvetica, sans-serif; */
     font-size: 0.8rem;
   }
   .outerContainer .filterArea .searchField .dropdownInputOuter {

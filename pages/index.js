@@ -4,17 +4,31 @@ import FilterArea from '../components/filterArea.jsx'
 import StocksTable from '../components/stocksTable.jsx'
 import PortfolioOverlap from '../components/portfolioOverlap.jsx'
 
+export async function getServerSideProps(context) {
+  try {
+    const{schid1,schid2} = context.query
+    const holdingsDetails = await axios
+      .get('http://localhost:3000/getPortfolioOverlap', {
+        params: { schid1: schid1, schid2: schid2 },
+      })
+      .then((res) => (res.data && res.data.status === 0 ? res.data.result : null));
+    return { props: { holdingsDetails } };
+  } catch (error) {
+    console.error(error);
+    return { props: { holdingsDetails: null } };
+  }
+}
 
-export default function Index(){
+export default function Index({holdingsDetails}){
   const [loading, setLoading] = useState(false)
-  const [holdingsDetails, setHoldingsDetails] = useState()
+  // const [holdingsDetails, setHoldingsDetails] = useState(holdingsDetails)
   const [dropdownA, setDropdownA] = useState(true)
   const [dropdownB, setDropdownB] = useState(true)
   const [schemeA, setSchemeA] = useState({})
   const [schemeB, setSchemeB] = useState({})
   const [mutualFunds, setMutualFunds] = useState('')
   const [debounce, setDebounce] = useState()
-  const [sortTable,setSortTable]=useState({})
+  const [sortTable,setSortTable]=useState({name:"",direction:2})
 
   const handleInputChange = (event, label) => {
     let debounceTimer = debounce
@@ -55,7 +69,7 @@ export default function Index(){
         }
       })
   }
-
+  
   const proceedDisable = () => {
     if (schemeA.id > 0 && schemeB.id > 0)
       return false
@@ -65,12 +79,14 @@ export default function Index(){
 
 
   const sort=(holding)=>{
+    
     let obj=[...holdingsDetails.holding]
     holding=="A" && obj.sort((a, b) => (a.holdingsA > b.holdingsA) ? (sortTable.direction ? 1 :-1) : (sortTable.direction ? -1 :1))
     holding=="B" && obj.sort((a, b) => (a.holdingsB > b.holdingsB) ? (sortTable.direction ? 1 :-1) : (sortTable.direction ? -1 :1))
     holding=="asset" && obj.sort((a, b) => (Math.min(a.netAssetA,a.netAssetB) > Math.min(b.netAssetA,b.netAssetB)) ? (sortTable.direction ? 1 :-1) : (sortTable.direction ? -1 :1))
     setHoldingsDetails({holding:obj,vennDiagram:holdingsDetails.vennDiagram,overlapValue:holdingsDetails.overlapValue})
     setSortTable({name:holding,direction:!(sortTable.direction)})
+   
   }
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchField from './searchField.jsx'
+import Link from 'next/link.js'
 
 export default function FilterArea(props) {
   return (
@@ -22,7 +23,10 @@ export default function FilterArea(props) {
         setDropdown={props.setDropdownB}
         handleInputChange={props.handleInputChange}
       />
-      <button className='proceedButton' disabled={props.proceedDisable()} onClick={() => props.handleSubmit()} >Go</button>
+
+     <Link href={`http://localhost:3001/?schid1=${props.schemeA.id}&schid2=${props.schemeB.id}`}> <button className='proceedButton' disabled={props.proceedDisable()} 
+    //  onClick={props.handleSubmit()}
+     >Go</button></Link>
     </>
   )
 }
