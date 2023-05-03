@@ -13,7 +13,7 @@ export default function PortfolioOverlap(props) {
               <div className='rightContainerA'><DonutChart values={props.holdingsDetails.overlapValue.overlapPercentage} /></div>
 
               <div className='rightContainerB'>
-                  <div className='commonStockDiv'><Image src={UpperLogo} className='commonStockIcon' /></div>
+                  <div className='commonStockDiv'><Image alt="Logo" src={UpperLogo} className='commonStockIcon' /></div>
                   <span className='commonStock'>{props.holdingsDetails.overlapValue.commonHoldings}<br />
                     <div className='text'>#common stocks</div>
                   </span>
@@ -23,7 +23,7 @@ export default function PortfolioOverlap(props) {
 
               <div className='rightContainerC'>
           
-                  <div className='unCommonStockDiv'><Image src={LowerLogo} className='unCommonStockIcon' /></div>
+                  <div className='unCommonStockDiv'><Image alt="Logo" src={LowerLogo} className='unCommonStockIcon' /></div>
                   <span className='unCommonStockA'>{props.holdingsDetails.overlapValue.unCommonHoldingsInA}<br />
                     <div className='text'>#uncommon stocks in A</div>
                   </span>
@@ -36,7 +36,7 @@ export default function PortfolioOverlap(props) {
 
 
               <div className='rightContainerD'>
-                  <div className='unCommonStockDiv'><Image src={LowerLogo} className='unCommonStockIcon' /></div>
+                  <div className='unCommonStockDiv'><Image alt="Logo" src={LowerLogo} className='unCommonStockIcon' /></div>
                   <span className='unCommonStockB'>{props.holdingsDetails.overlapValue.unCommonHoldingsInB}<br />
                     <div className='text'>#uncommon stocks in B</div>
                   </span>

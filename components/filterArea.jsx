@@ -7,6 +7,8 @@ export default function FilterArea(props) {
     <>
       <SearchField
         label="Scheme A"
+        clearInput={props.clearInputA}
+        setClearInput={props.setClearInputA}
         setScheme={props.setSchemeA}
         scheme={props.schemeA}
         mutualFunds={props.mutualFunds}
@@ -16,6 +18,8 @@ export default function FilterArea(props) {
       />
       <SearchField
         label="Scheme B"
+        clearInput={props.clearInputB}
+        setClearInput={props.setClearInputB}
         setScheme={props.setSchemeB}
         scheme={props.schemeB}
         mutualFunds={props.mutualFunds}
@@ -23,10 +27,11 @@ export default function FilterArea(props) {
         setDropdown={props.setDropdownB}
         handleInputChange={props.handleInputChange}
       />
-
-     <Link href={`http://localhost:3001/?schid1=${props.schemeA.id}&schid2=${props.schemeB.id}`}> <button className='proceedButton' disabled={props.proceedDisable()} 
-    //  onClick={props.handleSubmit()}
-     >Go</button></Link>
+{/* &schemeAName=${props.schemeA.scheme}&schemeBName=${props.schemeB.scheme} */}
+     <Link href={`http://localhost:3001/?schemeA=${props.schemeA.id}&schemeB=${props.schemeB.id}`}>
+      <button className='proceedButton' disabled={props.proceedDisable()} 
+     >Go</button>
+     </Link>
     </>
   )
 }

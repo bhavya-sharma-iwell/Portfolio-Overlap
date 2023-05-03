@@ -1,6 +1,7 @@
 import React from 'react'
 import ProgressBar from './progressBar.jsx'
 import SquareIcon from '@mui/icons-material/Square'
+import Link from 'next/link.js'
 
 export default function StocksTable(props) {
 
@@ -11,7 +12,7 @@ export default function StocksTable(props) {
         <table className='styledTable'>
           <thead>
             <tr>
-              <th className='tableHeading' onClick={()=>{props.sort("A")}}>{props.schemeA.scheme}<span className={props.sortTable.name!='A' ? 'sortDefault' :props.sortTable.direction==1 ?'sortAscending' : 'sortDescending'}></span></th>
+            <th className='tableHeading' onClick={()=>{props.sort("A")}}>{props.schemeA.scheme}<span className={props.sortTable.name!='A' ? 'sortDefault' :props.sortTable.direction==1 ?'sortAscending' : 'sortDescending'}></span></th>
               <th className='tableHeading' onClick={()=>{props.sort("asset")}}>Portfolio Overlap<span className={props.sortTable.name!='asset' ? 'sortDefault' :props.sortTable.direction==1 ?'sortAscending' : 'sortDescending'}></span></th>
               <th className='tableHeading' onClick={()=>{props.sort("B")}}>{props.schemeB.scheme}<span className={props.sortTable.name!='B' ? 'sortDefault' :props.sortTable.direction==1 ?'sortAscending' : 'sortDescending'}></span></th>
             </tr>
