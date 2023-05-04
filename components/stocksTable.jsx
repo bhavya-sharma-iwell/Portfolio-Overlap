@@ -12,9 +12,9 @@ export default function StocksTable(props) {
         <table className='styledTable'>
           <thead>
             <tr>
-            <th className='tableHeading' onClick={()=>{props.sort("A")}}>{props.schemeA.scheme}<span className={props.sortTable.name!='A' ? 'sortDefault' :props.sortTable.direction==1 ?'sortAscending' : 'sortDescending'}></span></th>
-              <th className='tableHeading' onClick={()=>{props.sort("asset")}}>Portfolio Overlap<span className={props.sortTable.name!='asset' ? 'sortDefault' :props.sortTable.direction==1 ?'sortAscending' : 'sortDescending'}></span></th>
-              <th className='tableHeading' onClick={()=>{props.sort("B")}}>{props.schemeB.scheme}<span className={props.sortTable.name!='B' ? 'sortDefault' :props.sortTable.direction==1 ?'sortAscending' : 'sortDescending'}></span></th>
+            <th className='tableHeading' onClick={()=>{props.sort("A")}}>{props.schemeAName}<span className={props.sortTable.name!='A' ? 'sortDefault' :props.sortTable.direction==true ?'sortAscending' : 'sortDescending'}></span></th>
+              <th className='tableHeading' onClick={()=>{props.sort("asset")}}>Portfolio Overlap<span className={props.sortTable.name!='asset' ? 'sortDefault' :props.sortTable.direction==true ?'sortAscending' : 'sortDescending'}></span></th>
+              <th className='tableHeading' onClick={()=>{props.sort("B")}}>{props.schemeBName}<span className={props.sortTable.name!='B' ? 'sortDefault' :props.sortTable.direction==true ?'sortAscending' : 'sortDescending'}></span></th>
             </tr>
           </thead>
           <tbody className='scroll'>

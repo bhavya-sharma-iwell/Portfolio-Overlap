@@ -27,8 +27,8 @@ export default function FilterArea(props) {
         setDropdown={props.setDropdownB}
         handleInputChange={props.handleInputChange}
       />
-{/* &schemeAName=${props.schemeA.scheme}&schemeBName=${props.schemeB.scheme} */}
-     <Link href={`http://localhost:3001/?schemeA=${props.schemeA.id}&schemeB=${props.schemeB.id}`}>
+
+     <Link href={`http://localhost:3001/?schemeAId=${props.schemeA.id}&schemeBId=${props.schemeB.id}&schemeAName=${props.schemeA.scheme}&schemeBName=${props.schemeB.scheme}`}>
       <button className='proceedButton' disabled={props.proceedDisable()} 
      >Go</button>
      </Link>

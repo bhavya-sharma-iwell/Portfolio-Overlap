@@ -7,10 +7,11 @@ import { useRouter } from 'next/router'
 
 export async function getServerSideProps(context) {
   try {
-    const{schemeA,schemeB,name,direction} = context.query
+    const{schemeAId,schemeBId,name,direction,schemeAName,schemeBName} = context.query
+  
     let holdingsDetails = await axios
       .get('http://localhost:3000/getPortfolioOverlap', {
-        params: { schid1: schemeA, schid2: schemeB },
+        params: { schid1: schemeAId, schid2: schemeBId },
       })
       .then((res) => (res.data && res.data.status === 0 ? res.data.result : null));
       if(name){
@@ -20,16 +21,16 @@ export async function getServerSideProps(context) {
       name=="asset" && obj.sort((a, b) => (Math.min(a.netAssetA,a.netAssetB) > Math.min(b.netAssetA,b.netAssetB)) ? ((direction=="true") ? 1 :-1) : ((direction=="true") ? -1 :1))
       holdingsDetails={holding:obj,vennDiagram:holdingsDetails.vennDiagram,overlapValue:holdingsDetails.overlapValue}
     }
-    return { props: { holdingsDetails } };
+    if(holdingsDetails)   return { props: { holdingsDetails,schemeAName,schemeBName,schemeAId,schemeBId } }
+    else      return { props: { holdingsDetails} }
   } catch (error) {
     console.error(error);
     return { props: { holdingsDetails: null } };
   }
 }
 
-export default function Index({holdingsDetails}){
+export default function Index({holdingsDetails,schemeAName,schemeBName,schemeAId,schemeBId}){
   const [loading, setLoading] = useState(false)
-  // const [holdingsDetails, setHoldingsDetails] = useState(holdingsDetails)
   const [clearInputA,setClearInputA] = useState(false)
   const [clearInputB,setClearInputB] = useState(false)
   const [dropdownA, setDropdownA] = useState(true)
@@ -38,13 +39,12 @@ export default function Index({holdingsDetails}){
   const [schemeB, setSchemeB] = useState({})
   const [mutualFunds, setMutualFunds] = useState('')
   const [debounce, setDebounce] = useState()
-  const [sortTable,setSortTable]=useState({name:"",direction:2})
+  const [sortTable,setSortTable]=useState({name:"",direction:true})
   const router = useRouter()
   const handleInputChange = (event, label) => {
     let debounceTimer = debounce
     clearTimeout(debounceTimer)
     const name = event.target.value
-    console.log(name)
     debounceTimer = setTimeout(() => {
       axios
         .get(`http://localhost:3000/getSchemes`, { params: {schemeName: name } })
@@ -59,33 +59,16 @@ export default function Index({holdingsDetails}){
     setDebounce(debounceTimer)
     switch (label) {
       case "Scheme A":
-        setSchemeA({ scheme: name, id: 0 ,goButton:false})
-        setClearInputA(true)
+        setSchemeA({ scheme: name, id: 0})
+        setClearInputA(name ? true: false) 
         break
       case "Scheme B":
-        setSchemeB({ scheme: name, id: 0 ,goButton:false})
-        setClearInputB(true)
+        setSchemeB({ scheme: name, id: 0})
+        setClearInputB(name ? true:false)
         break
     }
   }
 
-// {holdingsDetails && setSchemeA({ scheme: schemeA.scheme, id: schemeA.id ,goButton:true})}
-  const handleSubmit = () => {
-    // setLoading(true);
-    // axios.get(`http://localhost:3000/getPortfolioOverlap`, { params: { schid1: schemeA.id, schid2: schemeB.id } })
-    //   .then(res => {
-    //     if (res.data && res.data.status == 0) {
-    //       setHoldingsDetails(res.data.result)
-    //       setLoading(false);
-    //       setSortTable({name:"",direction:2})
-    //     }
-    //   })
-    // setSchemeA({ scheme: schemeA.scheme, id: schemeA.id ,goButton:true})
-    // setSchemeB({ scheme: schemeB.scheme, id: schemeB.id ,goButton:true})
-    // const Router=useRouter()
-    // Router.push(`http://localhost:3001/?schemeA=${schemeA.id}&schemeB=${schemeB.id}`)
-
-  }
   
   const proceedDisable = () => {
     if (schemeA.id > 0 && schemeB.id > 0)
@@ -96,14 +79,7 @@ export default function Index({holdingsDetails}){
 
 
   const sort=(holding)=>{
-    
-    let obj=[...holdingsDetails.holding]
-    holding=="A" && obj.sort((a, b) => (a.holdingsA > b.holdingsA) ? (sortTable.direction ? 1 :-1) : (sortTable.direction ? -1 :1))
-    holding=="B" && obj.sort((a, b) => (a.holdingsB > b.holdingsB) ? (sortTable.direction ? 1 :-1) : (sortTable.direction ? -1 :1))
-    holding=="asset" && obj.sort((a, b) => (Math.min(a.netAssetA,a.netAssetB) > Math.min(b.netAssetA,b.netAssetB)) ? (sortTable.direction ? 1 :-1) : (sortTable.direction ? -1 :1))
-    // setHoldingsDetails({holding:obj,vennDiagram:holdingsDetails.vennDiagram,overlapValue:holdingsDetails.overlapValue})
-   
-    router.push(`http://localhost:3001/?schemeA=${schemeA.id}&schemeB=${schemeB.id}&name=${holding}&direction=${sortTable.direction}`)
+    router.push(`http://localhost:3001/?schemeAId=${schemeAId}&schemeBId=${schemeBId}&name=${holding}&direction=${sortTable.direction}&schemeAName=${schemeAName}&schemeBName=${schemeBName}`)
     setSortTable({name:holding,direction:!(sortTable.direction)})
   }
 
@@ -124,7 +100,6 @@ export default function Index({holdingsDetails}){
           schemeA={schemeA}
           setSchemeB={setSchemeB}
           schemeB={schemeB}
-          handleSubmit={handleSubmit}
           proceedDisable={proceedDisable}
           dropdownA={dropdownA}
           setDropdownA={setDropdownA}
@@ -134,7 +109,7 @@ export default function Index({holdingsDetails}){
         />
       </div>
       {loading ? <div className='loader' /> : <> 
-     {holdingsDetails && <PortfolioOverlap holdingsDetails={holdingsDetails} />}   {holdingsDetails && <StocksTable holdingsDetails={holdingsDetails} schemeA={schemeA} schemeB={schemeB} sort={sort} sortTable={sortTable}/>} 
+     {holdingsDetails && <PortfolioOverlap holdingsDetails={holdingsDetails} />}   {holdingsDetails && <StocksTable holdingsDetails={holdingsDetails} sort={sort} sortTable={sortTable} schemeAName={schemeAName} schemeBName={schemeBName}/>} 
       </>}
     </div>
     </>
