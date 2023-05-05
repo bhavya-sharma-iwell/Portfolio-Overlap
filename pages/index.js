@@ -60,11 +60,9 @@ export default function Index({holdingsDetails,schemeAName,schemeBName,schemeAId
     switch (label) {
       case "Scheme A":
         setSchemeA({ scheme: name, id: 0})
-        setClearInputA(name ? true: false) 
         break
       case "Scheme B":
         setSchemeB({ scheme: name, id: 0})
-        setClearInputB(name ? true:false)
         break
     }
   }

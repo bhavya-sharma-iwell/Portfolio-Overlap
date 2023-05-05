@@ -1,8 +1,7 @@
-import React from 'react'
 import SearchField from './searchField.jsx'
 import Link from 'next/link.js'
 
-export default function FilterArea(props) {
+export const FilterArea = (props) => {
   return (
     <>
       <SearchField
@@ -27,11 +26,10 @@ export default function FilterArea(props) {
         setDropdown={props.setDropdownB}
         handleInputChange={props.handleInputChange}
       />
-
-     <Link href={`http://localhost:3001/?schemeAId=${props.schemeA.id}&schemeBId=${props.schemeB.id}&schemeAName=${props.schemeA.scheme}&schemeBName=${props.schemeB.scheme}`}>
-      <button className='proceedButton' disabled={props.proceedDisable()} 
-     >Go</button>
-     </Link>
+      <Link href={`http://localhost:3001/?schemeAId=${props.schemeA.id}&schemeBId=${props.schemeB.id}&schemeAName=${props.schemeA.scheme}&schemeBName=${props.schemeB.scheme}`}>
+        <button className='proceedButton' disabled={props.proceedDisable()}>Go</button>
+      </Link>
     </>
   )
 }
+export default FilterArea
