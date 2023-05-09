@@ -1,9 +1,10 @@
+import { Fragment } from 'react'
 import SearchField from './searchField.jsx'
 import Link from 'next/link.js'
 
 export const FilterArea = (props) => {
   return (
-    <>
+    <Fragment>
       <SearchField
         label="Scheme A"
         clearInput={props.clearInputA}
@@ -29,7 +30,7 @@ export const FilterArea = (props) => {
       <Link href={`http://localhost:3001/?schemeAId=${props.schemeA.id}&schemeBId=${props.schemeB.id}&schemeAName=${props.schemeA.scheme}&schemeBName=${props.schemeB.scheme}`}>
         <button className='proceedButton' disabled={props.proceedDisable()}>Go</button>
       </Link>
-    </>
+    </Fragment>
   )
 }
 export default FilterArea

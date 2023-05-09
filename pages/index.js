@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import axios from 'axios'
 import FilterArea from '../components/filterArea.jsx'
 import StocksTable from '../components/stocksTable.jsx'
@@ -29,7 +29,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function Index({holdingsDetails,schemeAName,schemeBName,schemeAId,schemeBId}){
+export const Index=({holdingsDetails,schemeAName,schemeBName,schemeAId,schemeBId})=>{
   const [loading, setLoading] = useState(false)
   const [clearInputA,setClearInputA] = useState(false)
   const [clearInputB,setClearInputB] = useState(false)
@@ -66,23 +66,18 @@ export default function Index({holdingsDetails,schemeAName,schemeBName,schemeAId
         break
     }
   }
-
-  
   const proceedDisable = () => {
     if (schemeA.id > 0 && schemeB.id > 0)
       return false
     else
       return true
   }
-
-
   const sort=(holding)=>{
     router.push(`http://localhost:3001/?schemeAId=${schemeAId}&schemeBId=${schemeBId}&name=${holding}&direction=${sortTable.direction}&schemeAName=${schemeAName}&schemeBName=${schemeBName}`)
     setSortTable({name:holding,direction:!(sortTable.direction)})
   }
-
   return (
-    <>
+    <Fragment>
     <title>Portfolio Overlap</title>
     <div className='outerContainer '>
       <h3 className='info'> Diversity the holding across different categories of fund investing in different asset classes after comparing the portfolio of various fund houses
@@ -110,6 +105,8 @@ export default function Index({holdingsDetails,schemeAName,schemeBName,schemeAId
      {holdingsDetails && <PortfolioOverlap holdingsDetails={holdingsDetails} />}   {holdingsDetails && <StocksTable holdingsDetails={holdingsDetails} sort={sort} sortTable={sortTable} schemeAName={schemeAName} schemeBName={schemeBName}/>} 
       </>}
     </div>
-    </>
+    </Fragment>
   )
 }
+
+export default Index

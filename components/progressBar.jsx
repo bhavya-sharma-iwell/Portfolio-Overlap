@@ -1,4 +1,4 @@
-export const ProgressBar=(props)=>{
+export const ProgressBar = (props)=>{
   const outerBar = {
     height: 7,
     width: "80%",

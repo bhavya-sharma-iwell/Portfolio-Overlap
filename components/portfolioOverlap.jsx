@@ -4,7 +4,7 @@ import UpperLogo from '../public/commonStock.png'
 import LowerLogo from '../public/unCommonStock.png'
 import Image from 'next/image'
 
-export const PortfolioOverlap=(props)=>{
+export const PortfolioOverlap = (props)=>{
   const values = props.holdingsDetails.overlapValue && props.holdingsDetails.overlapValue
   const array = [{ outerDiv: 'rightContainerB', imageDiv: 'commonStockDiv', image: UpperLogo, imageClass: 'commonStockIcon', spanAClass: 'commonStock', spanAValue: values.commonHoldings && values.commonHoldings, textAValue: '#common stocks' },
   { outerDiv: 'rightContainerC', imageDiv: 'unCommonStockDiv', image: LowerLogo, imageClass: 'unCommonStockIcon', spanAClass: 'unCommonStockA', spanAValue: values.unCommonHoldingsInA && values.unCommonHoldingsInA, textAValue: '#uncommon stocks in A', spanBClass: 'totalStockA', spanBValue: values.totalHoldingsInA && values.totalHoldingsInA, textBValue: '#total stocks in A' },

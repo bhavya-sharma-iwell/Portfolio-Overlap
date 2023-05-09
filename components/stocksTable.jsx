@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import ProgressBar from './progressBar.jsx'
 import SquareIcon from '@mui/icons-material/Square'
-import Link from 'next/link.js'
 
-export default function StocksTable(props) {
-
+export const StocksTable = (props) => {
   return (
-    <>
+    <Fragment>
       <span className='tableLabel'>Stocks Overlapping in mutual fund schemes</span>
       <div className='tableScroll'>
         <table className='styledTable'>
@@ -38,6 +36,7 @@ export default function StocksTable(props) {
 
           </tbody></table>
       </div>
-    </>
+    </Fragment>
   )
 }
+export default StocksTable

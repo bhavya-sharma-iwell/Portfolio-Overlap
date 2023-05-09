@@ -1,6 +1,6 @@
 import StackedGraph from './stackedGraph.jsx'
 
-export const GraphArea=(props)=>{
+export const GraphArea = (props)=>{
   return (
     <div className='leftDiv'>
         <div className='vennDiagramLeftLabel'><p>SCHEME A</p></div>

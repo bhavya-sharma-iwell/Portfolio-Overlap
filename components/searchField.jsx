@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SearchField(props) {
+export const SearchField = (props)=> {
   return (
     <div className="searchField">
       <label className='schemeLabel'>{props.label}</label>
@@ -28,10 +28,10 @@ export default function SearchField(props) {
             </div>
           ))}
       </div>
-
     </div>
   )
 }
+export default SearchField
 
 
 
