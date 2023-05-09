@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const SearchField = (props)=> {
   return (
     <div className="searchField">
