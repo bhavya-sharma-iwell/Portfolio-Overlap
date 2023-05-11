@@ -31,8 +31,6 @@ export async function getServerSideProps(context) {
 
 export const Index=({holdingsDetails,schemeAName,schemeBName,schemeAId,schemeBId})=>{
   const [loading, setLoading] = useState(false)
-  const [clearInputA,setClearInputA] = useState(false)
-  const [clearInputB,setClearInputB] = useState(false)
   const [dropdownA, setDropdownA] = useState(true)
   const [dropdownB, setDropdownB] = useState(true)
   const [schemeA, setSchemeA] = useState({})
@@ -84,10 +82,6 @@ export const Index=({holdingsDetails,schemeAName,schemeBName,schemeAId,schemeBId
         to avoid portfolio overlap</h3>
       <div className='filterArea'>
         <FilterArea
-          clearInputA={clearInputA}
-          setClearInputA={setClearInputA}
-          clearInputB={clearInputB}
-          setClearInputB={setClearInputB}
           mutualFunds={mutualFunds}
           setSchemeA={setSchemeA}
           schemeA={schemeA}

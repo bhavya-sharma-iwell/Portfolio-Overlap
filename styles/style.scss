@@ -21,9 +21,6 @@ body {
 }
 
 .outerContainer {
-    // width: 100%;
-    // display: inline-block;
-    // position: relative;
     padding: 1%;
 
     .info {
@@ -49,7 +46,6 @@ body {
             color: #FFFFFF;
             padding: 10px;
             width: 8%;
-
         }
 
         .proceedButton:disabled {
@@ -67,45 +63,32 @@ body {
                 font-size: 1.3rem;
             }
 
-            .dropdownInputOuter {
-                position: absolute;
-                width: 36%;
-                border: 3px solid $border-color;
+            .dropdownInput {
+                position: relative;
+                margin: 0.5% 0% 0% 0%;
+                padding: 1.2%;
+                display: block;
+                width: 73.5%;
+                border: 3px solid #eaebed;
                 border-radius: 4px;
-                height: 16%.5;
+                height: 33%;
+                font-size: 16px;
+            }
 
-                .dropdownInput {
-                    position: absolute;
-                    padding: 1.5%;
-                    width: 100%;
-                    border: none;
-                    border-radius: 4px;
-                    font-size: 16px;
-                }
-
-                .svg {
-                    margin: 1% 1% 0% 0%;
-                    float: right;
-                    position: relative;
-
-                }
-
-                .clearInput {
-                    margin: 1vh 1vw 0% 0%;
-                    font-size: 0.8vw;
-                    float: right;
-                    position: relative;
-                    font-weight: bold;
-                    color: red;
-                    cursor: pointer;
-                }
+            input[type="search"]::-webkit-search-cancel-button {
+                -webkit-appearance: none;
+                height: 10px;
+                width: 10px;
+                background-image: url('../public/cross.png');
+                background-size: 10px 10px;
+                cursor: pointer;
             }
 
             .dropDown {
                 border: 1px solid grey;
                 position: absolute;
-                width: 35.8%;
-                margin: 2.2% 0 0 0.1%;
+                width: 35.7%;
+                margin: 0% 0 0 0.1%;
                 display: block;
                 overflow-y: auto;
                 max-height: 18em;
@@ -165,7 +148,6 @@ body {
                 z-index: 1;
             }
 
-
             .vennDiagramLeft {
                 display: inline-block;
                 position: absolute;
@@ -175,7 +157,6 @@ body {
                 padding: 0%;
                 margin: 8% 0% 2% 1%;
                 border-radius: 3%;
-
 
                 .sideLabel {
                     float: left;
@@ -191,7 +172,6 @@ body {
                 .graphA {
                     position: absolute;
                     margin: 20% 0% 0% 30%;
-
                 }
 
                 .graphALabel {
@@ -206,14 +186,11 @@ body {
                 .commonGraphA {
                     position: absolute;
                     margin: 20% 0% 0% 65%;
-
                 }
 
                 .commonGraphB {
                     position: absolute;
                     margin: 20% 0% 0% 80%;
-
-
                 }
 
                 .commonGraphLabel {
@@ -224,7 +201,6 @@ body {
                     color: $text-color;
                     font-size: 0.85vw;
                 }
-
             }
 
             .vennDiagramRightLabel {
@@ -240,7 +216,6 @@ body {
                 z-index: 1;
             }
 
-
             .vennDiagramRight {
                 position: relative;
                 border: 2px solid $red;
@@ -254,7 +229,6 @@ body {
                 .graphB {
                     position: absolute;
                     margin: 32% 0% 0% 60%;
-
                 }
 
                 .graphBLabel {
@@ -318,6 +292,7 @@ body {
                         position: absolute;
                         margin: 3% 0 0 7%;
                         width: 50%;
+                        height: 5.5vh;
                     }
                 }
 
@@ -928,11 +903,13 @@ body {
                     }
                 }
             }
+
             .proceedButton {
                 width: 20%;
                 margin: 6vw 0 0 34vw;
             }
         }
+
         .portfolioOverlap {
             margin: 3% 1% 2% 0%;
             width: 100%;
@@ -1095,7 +1072,7 @@ body {
                             position: absolute;
                             margin: 0.5vw 0 0 1vw;
                             width: 12vw;
-                            height:4vh;
+                            height: 4vh;
                         }
                     }
 
@@ -1135,7 +1112,7 @@ body {
                             position: absolute;
                             margin: 0.5vw 0 0 1vw;
                             width: 12vw;
-                            height:4vh;
+                            height: 4vh;
                         }
                     }
 

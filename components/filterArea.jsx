@@ -7,8 +7,6 @@ export const FilterArea = (props) => {
     <Fragment>
       <SearchField
         label="Scheme A"
-        clearInput={props.clearInputA}
-        setClearInput={props.setClearInputA}
         setScheme={props.setSchemeA}
         scheme={props.schemeA}
         mutualFunds={props.mutualFunds}
@@ -18,8 +16,6 @@ export const FilterArea = (props) => {
       />
       <SearchField
         label="Scheme B"
-        clearInput={props.clearInputB}
-        setClearInput={props.setClearInputB}
         setScheme={props.setSchemeB}
         scheme={props.schemeB}
         mutualFunds={props.mutualFunds}
